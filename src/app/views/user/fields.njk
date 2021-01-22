@@ -6,6 +6,7 @@
             name="name"
             placeholder="Digite seu nome completo"
             value = "{{ user.name }}"
+            required
         >
     </div>
 </div>
@@ -58,6 +59,8 @@
             value = "{{ user.cpf_cnpj }}"
             onkeydown="Mask.apply(this, 'cpfCnpj')"
             maxlength="18"
+            onblur="Validate.apply(this, 'isCpfCnpj')"
+
         >
     </div>
 </div>
@@ -71,6 +74,8 @@
             placeholder="Digite eu CEP '99999-999'"
             value = "{{ user.cep }}"
             onkeydown="Mask.apply(this, 'cep')"
+            onblur="Validate.apply(this, 'isCep')"
+
         >
     </div>
 </div>

@@ -607,3 +607,13 @@ form .item #photos-preview  img {
 .form input[name="cep"] {
     max-width: 60%;
 }
+
+/* validade errors */
+
+.input .error {
+    background-color: #e74d3c;
+    padding: 4px;
+    border-radius: 4px;
+    color: white;
+    max-width: 60%;
+}

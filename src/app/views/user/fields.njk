@@ -55,6 +55,8 @@
             name="cpf_cnpj"
             placeholder="Digite seu documento"
             value = "{{ user.cpf_cnpj }}"
+            onkeydown="Mask.apply(this, 'cpfCnpj')"
+            maxlength="18"
         >
     </div>
 </div>
@@ -67,6 +69,7 @@
             name="cep"
             placeholder="Digite eu CEP '99999-999'"
             value = "{{ user.cep }}"
+            onkeydown="Mask.apply(this, 'cep')"
         >
     </div>
 </div>

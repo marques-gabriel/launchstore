@@ -23,8 +23,8 @@ const Validator = require('../app/validators/user')
 routes.get('/register', UserController.registerForm)
 routes.post('/register', Validator.post,  UserController.post)
 
-routes.get('/', UserController.show)
-// routes.put('/register', UserController.update)
-// routes.delete('/register', UserController.delete)
+routes.get('/', Validator.show, UserController.show)
+routes.put('/', Validator.update, UserController.update)
+// routes.delete('/', UserController.delete)
 
 module.exports = routes

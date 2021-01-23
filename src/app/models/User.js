@@ -11,9 +11,9 @@ module.exports = {
             ${key}
             `
 
-            Object.keys(filters[key].map(field => {
+            Object.keys(filters[key]).map(field => {
                 query = `${query} ${field} = '${filters[key][field]}'`
-            }))
+            })
         })
 
         const results =  await db.query(query)

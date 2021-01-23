@@ -603,7 +603,7 @@ form .item #photos-preview  img {
 .form input[name="passwordRepeat"],
 .form input[name="cpf_cnpj"],
 .form input[name="cep"] {
-    max-width: 60%;
+    /* max-width: 60%; */
 }
 
 /* validade errors */
@@ -613,5 +613,5 @@ form .item #photos-preview  img {
     padding: 4px;
     border-radius: 4px;
     color: white;
-    max-width: 60%;
+    /* max-width: 60%; */
 }

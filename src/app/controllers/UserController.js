@@ -6,11 +6,16 @@ module.exports = {
         return res.render("user/register")
     },
 
+    show(req, res) {
+        return res.send('CADASTRADO')
+    },
+
     async post(req, res) {
 
-        
+        const userId = await User.create(req.body)
 
-        return res.send("passou")
+
+        return res.redirect("/users")
     }
 
 }

@@ -1,6 +1,6 @@
 const db = require('../../config/db')
 const { hash } = require('bcryptjs')
-const { update } = require('../controllers/UserController')
+// const { update } = require('../controllers/UserController')
 
 module.exports = {
     async findOne(filters) {
@@ -50,6 +50,7 @@ module.exports = {
                 data.address
             ]
 
+            
             const results = await db.query(query, values)
             return results.rows[0].id
 

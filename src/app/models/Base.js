@@ -57,29 +57,29 @@ const Base = {
                 values = []
             
 
-            Object.keys(fields).map((key, index, array) => {
-                
-
+            Object.keys(fields).map((key, index, array) => { 
                 keys.push(key)
-                values.push(fields[key])
+                values.push(`'${fields[key]}'`)
 
-                const query =  `INSERT INTO ${this.table} (${keys.join(',')})
-                    VALUES (${values.join(',')})
-                    RETURNING id
-                `
-                
-                const results = await db.query(query)
-                return results.rows[0].id
-
-                // if ((index + 1) < array.length) {
-                //     keys += `${key},`
-                //     values += `${fields[key]},`
-                // } else {
-                //     keys += `${key}`
-                //     values += `${fields[key]}`
-                // }
-                 
             })
+
+            const query =  `INSERT INTO ${this.table} (${keys.join(',')})
+                VALUES (${values.join(',')})
+                RETURNING id
+            `
+            
+            const results = await db.query(query)
+            return results.rows[0].id
+
+            // if ((index + 1) < array.length) {
+            //     keys += `${key},`
+            //     values += `${fields[key]},`
+            // } else {
+            //     keys += `${key}`
+            //     values += `${fields[key]}`
+            // }
+                 
+            
 
 
 

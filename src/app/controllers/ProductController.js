@@ -1,3 +1,4 @@
+const { unlinkSync } = require('fs')
 const Category = require('../models/Category')
 const Product = require('../models/Product')
 const File = require('../models/File')
@@ -38,7 +39,7 @@ module.exports = {
             
             let { category_id, name, description, old_price, price, quantity, status } = req.body
 
-            price = data.price.replace(/\D/g,"")
+            price = price.replace(/\D/g,"")
 
             const product_id = await Product.create({
                 category_id,
@@ -52,10 +53,10 @@ module.exports = {
             })
             
             const filesPromise = req.files.map(file =>
-                File.create({ ...file, product_id }))
+                File.create({ name: file.filename, path: file.path, product_id }))
             await Promise.all(filesPromise)
 
-            return res.redirect(`/products/${productId}/edit`)
+            return res.redirect(`/products/${product_id}/edit`)
 
         } catch (error) {
             console.error(error)
@@ -140,7 +141,7 @@ module.exports = {
 
             if (req.files.length != 0) {
                 const newFilesPromise = req.files.map(file => 
-                    File.create({...file, product_id: req.body.id}))
+                    File.create({name: file.filename, path: file.path, product_id: req.body.id}))
 
                     await Promise.all(newFilesPromise)
             }
@@ -151,6 +152,14 @@ module.exports = {
                 const lastIndex = removedFiles.length - 1
                 removedFiles.splice(lastIndex, 1)
 
+                files.map(file => {
+
+                    try {
+                        unlinkSync(file.path)
+                    } catch (err) {
+                        console.error(err)
+                    }
+                })
 
                 const removedFilesPromise = removedFiles.map(id => File.delete(id))
 
@@ -182,19 +191,26 @@ module.exports = {
         } catch (error) {
             console.error(error)
         }
-
         
     },
 
     async delete(req, res) {
 
-        await Product.delete(req.body.id)
+         const files = await Product.files(req.body.id)
+
+         await Product.delete(req.body.id)
+
+         files.map(file => {
+
+            try {
+                unlinkSync(file.path)
+            } catch (err) {
+                console.error(err)
+            }
+        })
 
         return res.redirect('/products/create')
 
     }
-
-
-
 
 }

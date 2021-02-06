@@ -7,10 +7,10 @@ function find(filters, table) {
         Object.keys(filters).map(key => {
 
             // WHERE | OR | AND
-            query += `${key}`
+            query += ` ${key}`
     
             Object.keys(filters[key]).map(field => {
-                query += `${field} = '${filters[key][field]}'`
+                query += ` ${field} = '${filters[key][field]}'`
             })
         })
     }

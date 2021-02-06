@@ -1,30 +1,20 @@
-const Product = require('../models/Product')
-
-const {formatPrice} = require('../../lib/utils')
+const LoadProductService = require('../services/LoadProductService')
 
 module.exports = {
    async index(req, res) {
-        const products = await Product.findAll()
+    
 
-        if (!products) res.send("Products not found")
+        try {
+            const allProducts = await LoadProductService.load('products')
 
-        async function getImage(productId) {
-            let files = await Product.files(productId)
-            files = files.map(file => `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`)
+            const products = allProducts
+            .filter((product, index) => index > 2 ? false : true)
 
-            return files[0]
+            return res.render("home/index", { products })
+
+        } catch (error) {
+            console.error(error)
         }
 
-        const productsPromise = products.map(async product => {
-            product.img = await getImage(product.id)
-            product.price = formatPrice(product.price)
-            product.oldPrice = formatPrice(product.old_price)
-            return product
-
-        }).filter((product, index) => index > 2 ? false : true)
-
-        const lastAdded = await Promise.all(productsPromise)
-
-        return res.render("home/index", { products: lastAdded})
     }
 }

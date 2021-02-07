@@ -49,13 +49,13 @@ module.exports = {
             })
 
             // notificar o usuario com mensagem de sucesso ou erro
-            return res.render('oders/success')
+            return res.render('orders/success')
 
 
 
         } catch (error) {
             console.error(error)
-            return res.render('oders/error')
+            return res.render('orders/error')
         }
 
     }

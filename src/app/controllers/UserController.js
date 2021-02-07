@@ -1,5 +1,6 @@
 const { hash } = require('bcryptjs')
 const { unlinkSync } = require('fs')
+const LoadProductsServices = require('../services/LoadProductService')
 
 const User = require('../models/User')
 const Product = require('../models/Product')
@@ -131,6 +132,14 @@ module.exports = {
                 error: "Erro ao deletar a conta"
             })
         }
+    },
+
+    async ads(req, res) {
+        const products = await LoadProductsServices.load('products', {
+            where: { user_id: req.session.userId }
+        })
+
+        return res.render("user/ads", { products })
     }
 
 }

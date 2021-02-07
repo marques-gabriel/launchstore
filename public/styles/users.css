@@ -79,6 +79,10 @@
     text-decoration: underline;
 }
 
+.user-dashboard {
+    max-width: 500px;
+}
+
 
 /* .form input[name="email"],
 .form input[name="password"],

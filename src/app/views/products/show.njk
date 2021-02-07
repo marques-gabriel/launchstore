@@ -71,16 +71,23 @@
 
             </div>
 
+            {% if (session.userId) and (product.user_id == session.userId) %}
+                <p class="unavailable">Você é o vendedor desse produto</p>
+            {% else %}
+                <div class="buy">
+                    {% if product.status == 0 %}
+                        <p class="unavailable">INDISPONÍVEL</p>
+                    {% elseif product.quantity == 0 %}
+                        <p class="unavailable">SEM ESTOQUE</p>
+                    {% else %}
 
-            <div class="buy">
-                {% if product.status == 0 %}
-                    <p class="unavailable">INDISPONÍVEL</p>
-                {% elseif product.quantity == 0 %}
-                    <p class="unavailable">SEM ESTOQUE</p>
-                {% else %}
-                    <button class="button">Comprar</button>
-                {% endif %}
-            </div>
+                    <form action="/users/orders" method="post">
+                        <input type="hidden" name="id" value="{{product.id}}">
+                        <button class="button">Comprar</button>
+                    </form>
+                    {% endif %}
+                </div>
+            {% endif %}
         </div>
 
     </div>

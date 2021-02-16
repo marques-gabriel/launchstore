@@ -20,7 +20,7 @@ const Cart = {
     addOne(product) {
 
         // vefiricar se o item existe no carrinho
-        let inCart = this.items.find(item => item.product.id == product.id)
+        let inCart = this.getCardItem(product.id)
 
         // se nao existir
         if (!inCart) {
@@ -57,7 +57,7 @@ const Cart = {
     removeOne(productId) {
 
         // pegar item do carinho
-        const inCart = this.items.find(item => item.product.id == productId)
+        const inCart = this.getCardItem(productId)
 
         if(!inCart) return this
 
@@ -84,7 +84,29 @@ const Cart = {
         return this
     },
 
-    delete(productId) {}
+    delete(productId) {
+
+        const inCart = this.getCardItem(productId)
+
+        if(!inCart) return this
+
+        if(this.items.length > 0) {
+            this.total.quantity -= inCart.quantity
+            this.total.price -= (inCart.product.price * inCart.quantity)
+            this.total.formattedPrice = formatPrice(this.total.price)
+        }
+
+        this.items = this.items.filter(item => inCart.product.id != item.product.id)
+
+        return this
+    },
+
+    getCardItem(productId) {
+
+        return this.items.find(item => item.product.id == productId)
+
+
+    }
 }
 
 module.exports = Carts

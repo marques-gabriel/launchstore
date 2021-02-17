@@ -73,7 +73,7 @@
     justify-content: center;
 }
 
-.cart .quantity-control .quatity {
+.cart .quantity-control .quantity {
     margin: 0 8px;
     color: #555;
 
@@ -85,6 +85,7 @@
 
 .cart .add, .cart .remove, .cart .delete {
     cursor: pointer;
+    background: none;
 }
 
 .cart .delete {
@@ -129,7 +130,7 @@
 
 
 .cart .button.order:hover {
-    background: rgb(0, 100, 64);
+    background: rgb(0, 170, 64);
 
 }
 

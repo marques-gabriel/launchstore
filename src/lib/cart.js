@@ -109,4 +109,4 @@ const Cart = {
     }
 }
 
-module.exports = Carts
+module.exports = Cart

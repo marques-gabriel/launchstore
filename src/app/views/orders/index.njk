@@ -27,7 +27,7 @@
                         <div>
                             <div class="title">{{order.product.name}}</div>
                             <div class="price">{{order.formattedPrice}}</div>
-                            <div class="updated-at">{{order.formattedUpdatedAt}}
+                            <div class="updated-at">{{order.formattedUpdatedAt}}</div>
                         </div>
                     </div>
 
@@ -40,7 +40,7 @@
 
                     </div>
 
-                    <div class="status">
+                    <div class="status {{order.status}}">
                         {{order.formattedStatus}}
                     </div>
                 </div>

@@ -31,7 +31,7 @@ module.exports = {
 
         const getOrdersPromise = orders.map(async order => {
             // detalhes do produto  
-            order.product = await LoadProductService.load('products', {
+            order.product = await LoadProductService.load('product', {
                 where: { id: order.product_id }
             })
 
@@ -56,11 +56,11 @@ module.exports = {
                 canceled: 'Cancelado'
             }
 
-            order.formattedStatus =  statuses[order.status] //satatuses.open ex.
+            order.formattedStatus =  statuses[order.status] //statuses.open ex.
 
             // formatacao de atualizado email..
             const updatedAt = date(order.updated_at)
-            order.formattedUpdatedAt = `${order.formattedStatus} em ${updatedAt.day}/${updatedAt.month}/${updatedAt.year} às ${updatedAt.hour}h ${updatedAt.minutes}`
+            order.formattedUpdatedAt = `${order.formattedStatus} em ${updatedAt.day}/${updatedAt.month}/${updatedAt.year} às ${updatedAt.hour}h${updatedAt.minutes}min`
 
             return order
 

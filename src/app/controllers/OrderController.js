@@ -47,7 +47,7 @@ module.exports = {
 
             // formatacao de preco
             order.formattedPrice = formatPrice(order.price)
-            order.formattedToral = formatPrice(order.total)
+            order.formattedTotal = formatPrice(order.total)
 
             // fomatacao do status 
             const statuses = {
@@ -60,7 +60,7 @@ module.exports = {
 
             // formatacao de atualizado email..
             const updatedAt = date(order.updated_at)
-            order.formattedUpadatedAt = `${order.formattedStatus} em ${updatedAt.day}/${updatedAt.month}/${updatedAt.year} às ${updatedAt.hour}h ${updatedAt.minutes}`
+            order.formattedUpdatedAt = `${order.formattedStatus} em ${updatedAt.day}/${updatedAt.month}/${updatedAt.year} às ${updatedAt.hour}h ${updatedAt.minutes}`
 
             return order
 

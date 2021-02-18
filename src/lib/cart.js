@@ -20,7 +20,7 @@ const Cart = {
     addOne(product) {
 
         // vefiricar se o item existe no carrinho
-        let inCart = this.getCardItem(product.id)
+        let inCart = this.getCartItem(product.id)
 
         // se nao existir
         if (!inCart) {
@@ -57,7 +57,7 @@ const Cart = {
     removeOne(productId) {
 
         // pegar item do carinho
-        const inCart = this.getCardItem(productId)
+        const inCart = this.getCartItem(productId)
 
         if(!inCart) return this
 
@@ -86,7 +86,7 @@ const Cart = {
 
     delete(productId) {
 
-        const inCart = this.getCardItem(productId)
+        const inCart = this.getCartItem(productId)
 
         if(!inCart) return this
 
@@ -101,7 +101,7 @@ const Cart = {
         return this
     },
 
-    getCardItem(productId) {
+    getCartItem(productId) {
 
         return this.items.find(item => item.product.id == productId)
 

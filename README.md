@@ -41,7 +41,7 @@ O Bootcamp foi uma experiência online com muito conteúdo prático e desafios p
 ## ⚙️ Funcionalidades
 
 -   Sistema de login e recuperação de senha
--   Carrinho de compras
+-   Carrinho de compra
 -   Upload de imagens com multer
 -   Páginas dinâmicas com Nunjucks
 -   Envio de email com Nodemailer

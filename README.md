@@ -117,7 +117,7 @@ $ edite o arquivo mailer.js dentro da pasta scr/lib com suas credenciais (mailtr
 $ npm start
 
 ```
-**💡  Não exclua ou altere o arquivo placeholder.png da pasta plublic/images, pois os produtos gerados pelo seed.js compartilham desse arquivo entre si. Caso tenha excluído, ele também está disponíveis na pasta assets.**
+**💡  Não exclua ou altere o arquivo placeholder.png da pasta plublic/images, pois os produtos gerados pelo seed.js compartilham desse arquivo entre si. Caso tenha excluído, ele também está disponível na pasta assets.**
 
 **__Crie novos produtos e usuários para testar a aplicação com edição e remoção por exemplo__**
 

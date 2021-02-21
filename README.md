@@ -110,7 +110,7 @@ $ utilize os comandos inclusos no arquivo database.sql
 # Popule o banco de dados usando o arquivo "seed.js"
 $ node seed.js
 
-# Criar Novos Usuários e Recupeção de Senha
+# Recupeção de Senha de usuário e realização de pedidos
 $ edite o arquivo mailer.js dentro da pasta scr/lib com suas credenciais (mailtrap) para utilizar esse recurso.
 
 # Inicie a aplicação
